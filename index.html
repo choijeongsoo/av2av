@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.88.1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href=""https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" href="css/normalize.css">
+
+	<title>AV2AV</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1091.0" data-gr-ext-installed="">
+
+<div class="container" >
+<header role="banner">
+</header>
+<main role="main">
+<article itemscope itemtype="https://schema.org/BlogPosting">
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<div class="text-center">
+	<h2>AV2AV</h2>
+        <h4>Direct Audio-Visual Speech to Audio-Visual Speech Translation<br>with Unified Audio-Visual Speech Representation</h4>
+		[<a href="https://arxiv.org/abs/2312.02512">Paper</a>] [<a href="https://github.com/choijeongsoo/av2av">Code</a>]
+
+        <p class="fst-italic mb-0">
+		<br>
+		<b>Jeongsoo Choi*, Se Jin Park*, Minsu Kim*, Yong Man Ro</b><br>
+		School of Electrical Engineering, KAIST, South Korea<br><br>
+        </p>
+	</div>
+	<p>
+        <b>Abstract.</b>
+		This paper proposes a novel direct Audio-Visual Speech to Audio-Visual Speech Translation (AV2AV) framework, where the input and output of the system are multimodal (i.e., audio and visual speech). With the proposed AV2AV, two key advantages can be brought: 1) We can perform real-like conversations with individuals worldwide in a virtual meeting by utilizing our own primary languages. In contrast to Speech-to-Speech Translation (A2A), which solely translates between audio modalities, the proposed AV2AV directly translates between audio-visual speech. This capability enhances the dialogue experience by presenting synchronized lip movements along with the translated speech. 2) We can improve the robustness of the spoken language translation system. By employing the complementary information of audio-visual speech, the system can effectively translate spoken language even in the presence of acoustic noise, showcasing robust performance. To mitigate the problem of the absence of a parallel AV2AV translation dataset, we propose to train our spoken language translation system with the audio-only dataset of A2A. This is done by learning unified audio-visual speech representations through self-supervised learning in advance to train the translation system. Moreover, we propose an AV-Renderer that can generate raw audio and video in parallel. It is designed with zero-shot speaker modeling, thus the speaker in source audio-visual speech can be maintained at the target translated audio-visual speech. The effectiveness of AV2AV is evaluated with extensive experiments in a many-to-many language translation setting.
+	</p>
+	<p>
+		<ul>
+			<li>In each direction of language translation, a single unified multilingual model was used.</li>
+		</ul>
+	</p>
+	<p>
+		<b>Contents</b>
+		<ul>
+			<li><a href="#model-overview">Model Overview</a></li>
+			<li><a href="#av2av-samples">Audio-Visual Speech to Audio-Visual Speech Translation</a></li>
+    	</ul>
+	</p>	
+</div>
+
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">		
+	<h2 id="model-overview" style="text-align: center;">Model Overview</h2>
+	<body>
+	<p style="text-align: center;">
+		<img src="pics/overview.png" height="500" width="1000">
+	</p>
+	</body>
+		<p style="text-align: center;" >
+			<b>Figure.</b> (a) We extract unified audio-visual speech representations using multilingual trained AV-HuBERT. The speech features are discretized into audio-visual speech units through quantization and treated as pseudo text. (b) By using audio-visual speech units, we translate between multilingual languages using a transformer encoder-decoder model. (c) The audio speech and visual speech are generated in parallel from the translated audio-visual speech units by using the proposed Zero-shot AV-Renderer. The renderer can perform in a zero-shot setting so that we can keep the speaker identity the same before and after the translation.
+		</p>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="av2av-samples" style="text-align: center;">Audio-Visual Speech to Audio-Visual Speech Translation</h2>
+	<br>
+	<h4 style="text-align: center;">English-X Translation Results on <a href="https://mmai.io/datasets/lip_reading">LRS3</a> dataset</h4>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th style="text-align: center">Language</th>
+					<th style="text-align: center">Source<br>(transcription)</th>
+					<th style="text-align: center">AV2AV<br>(ASR transcribed)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><p>English -> Spanish</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/1.webm" type="video/webm"></video><p>that means at some point it's going to be your problem too</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/1_en-es.webm" type="video/webm"></video><p>esto significa que en algún momento será también su problema</p></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><p>English -> French</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/2.webm" type="video/webm"></video><p>i understand how this could happen</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/2_en-fr.webm" type="video/webm"></video><p>je comprends comment ça peut arriver</p></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><p>English -> Italian</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/3.webm" type="video/webm"></video><p>don't we already know the consequences of a changing climate</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/3_en-it.webm" type="video/webm"></video><p>non sappiamo già le conseguenze di un candiamento climatico</p></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><p>English -> Portuguese</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/4.webm" type="video/webm"></video><p>she never had to duck and cover under her desk at school</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/4_en-pt.webm" type="video/webm"></video><p>ela nunca tinha que sentar e cobrir sobre sua primeira mesa</p></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<h4 style="text-align: center;">X-English Translation Results on <a href="https://www.openslr.org/100">mTEDx</a> dataset</h4>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th style="text-align: center">Language</th>
+					<th style="text-align: center">Source<br>(transcription)</th>
+					<th style="text-align: center">AV2AV<br>(ASR transcribed)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><p>Spanish -> English</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="448" controls><source src="videos/5.webm" type="video/webm"></video><p>pero lejos de todo esto, que me sirve muchísimo y de lo que estoy orgulloso, creo que lo más me gusta, con lo que más disfruto con mi trabajo, es cuando escribo algo</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="448" controls><source src="videos/5_es-en.webm" type="video/webm"></video><p>but away from all this that serves me very much and what is very proud of what i most like what i most enjoy with my work is i write something</p></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><p>French -> English</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="448" controls><source src="videos/6.webm" type="video/webm"></video><p>et puis il est tombé malade</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="448" controls><source src="videos/6_fr-en.webm" type="video/webm"></video><p>and then he was sick</p></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><p>Italian -> English</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="448" controls><source src="videos/7.webm" type="video/webm"></video><p>e, da questo punto di vista, c’è corrispondenza</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="448" controls><source src="videos/7_it-en.webm" type="video/webm"></video><p>and from this point of view there is correspondence</p></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><p>Portuguese -> English</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="448" controls><source src="videos/8.webm" type="video/webm"></video><p>a technologia na saúde não é nova</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="448" controls><source src="videos/8_pt-en.webm" type="video/webm"></video><p>technology in health is not new</p></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<h4 style="text-align: center;">Comparison with Cascaded System</h4>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th style="text-align: center">Language</th>
+					<th style="text-align: center">Source<br>(transcription)</th>
+					<th style="text-align: center">Cascaded<br>(ASR transcribed)</th>
+					<th style="text-align: center">AV2AV<br>(ASR transcribed)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><p>English -> Spanish</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/9.webm" type="video/webm"></video><p>that means at some point it's going to be your problem too</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/9_cascaded.webm" type="video/webm"></video><p>esto significa que en algún momento será su problema también</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/9_proposed.webm" type="video/webm"></video><p>esto significa que en algún momento será también su problema</p></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><p>Portuguese -> English</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/10.webm" type="video/webm"></video><p>além disso, a gente ganhou um apoio muito grande da mídia</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/10_cascaded.webm" type="video/webm"></video><p>in addition, we have gained a very large support from the media</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/10_proposed.webm" type="video/webm"></video><p>in addition, we received a very large support from the media</p></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<!-- <h4 style="text-align: center;">(Additional) English-X Translation Results on <a href="https://github.com/MRzzm/HDTF">HDTF</a> dataset</h4>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th style="text-align: center">Language</th>
+					<th style="text-align: center">Source<br>(transcription)</th>
+					<th style="text-align: center">AV2AV<br>(ASR transcribed)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><p>English -> Italian</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/11.webm" type="video/webm"></video><p>america, and perhaps that’s why some people hate this nation</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/11_en-it.webm" type="video/webm"></video><p>sunamericano, forse pè questo che hi alcune persone odiano questa nazione</p></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><p>English -> Portuguese</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/12.webm" type="video/webm"></video><p>the highest levels of american businesses, earlier this month i released the finding</p></td>
+					<td style="vertical-align: top; text-align: center"><video width="224" controls><source src="videos/12_en-pt.webm" type="video/webm"></video><p>um vez mais alto da eu prosas americanas antes desto mes vio pr wikay es que so otat</p></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br> -->
+</div>
+
+</article>
+</main>
+</div>
+
+</body>
+</html>
