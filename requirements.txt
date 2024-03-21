@@ -1,0 +1,7 @@
+python-speech-features==0.6
+scipy==1.10.0
+opencv-python==4.5.4.60
+liprosa==0.8.1
+soundfile
+av
+ffmpeg-python
