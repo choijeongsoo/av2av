@@ -38,7 +38,7 @@ conda install "ffmpeg<5" -c conda-forge
   Stage | Download Link
   |---|---
   AV Speech Unit Extraction | [mavhubert_large_noise.pt](https://drive.google.com/file/d/18qiZkzrhDtaaleUPiOXf8WDKS9ZumUTa/view?usp=sharing)
-  Multilingual AV2AV Translation | [utut_sts_ft.pt](https://drive.google.com/file/d/1iT3EItPn8uqM5vMTJSCGztzCzNouHzNb/view?usp=sharing)
+  Multilingual AV2AV Translation | [utut_sts_ft.pt](https://drive.google.com/file/d/12kNqrl2EuqkDwUvekib7_Ou7fUwUnYBU/view?usp=sharing)
   Zero-shot AV-Renderer | [unit_av_renderer.pt](https://drive.google.com/file/d/1KhtkV8TkdE_GBhLQy-CQKJpfJThQr1P4/view?usp=sharing)
 
 ## Inference
