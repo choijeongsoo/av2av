@@ -3,7 +3,7 @@
 Official PyTorch implementation for the following paper:
 > **AV2AV: Direct Audio-Visual Speech to Audio-Visual Speech Translation with Unified Audio-Visual Speech Representation**<br>
 > [Jeongsoo Choi](https://choijeongsoo.github.io)\*, [Se Jin Park](https://sites.google.com/view/sejinpark)\*, [Minsu Kim](https://sites.google.com/view/ms-dot-k)\*, [Yong Man Ro](https://www.ivllab.kaist.ac.kr/people/professor)<br>
-> CVPR 2024<br>
+> CVPR 2024 (Highlight)<br>
 > \[[Paper](https://arxiv.org/abs/2312.02512)\] \[[Demo](https://choijeongsoo.github.io/av2av)\]
 
 <div align="center"><img width="60%" src="imgs/fig1.png?raw=true"/></div>
