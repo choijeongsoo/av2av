@@ -247,7 +247,7 @@ class SpeakerEncoder(nn.Module):
         utterances.
         """
         if partial_utterance_n_frames is None:
-            partial_utterance_n_frames = self.cfg.inference_n_frames
+            partial_utterance_n_frames = self.cfg.partials_n_frames
 
         assert 0 <= overlap < 1
         assert 0 < min_pad_coverage <= 1
