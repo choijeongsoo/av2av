@@ -63,15 +63,15 @@ This repository is built upon [AV-HuBERT](https://github.com/facebookresearch/av
 
 If our work is useful for your research, please consider citing the following papers:
 ```bibtex
-@article{choi2023av2av,
+@inproceedings{choi2024av2av,
   title={AV2AV: Direct Audio-Visual Speech to Audio-Visual Speech Translation with Unified Audio-Visual Speech Representation},
-  author={Jeongsoo Choi and Se Jin Park and Minsu Kim and Yong Man Ro},
-  journal={arXiv preprint arXiv:2312.02512},
-  year={2023}
+  author={Choi, Jeongsoo and Park, Se Jin and Kim, Minsu and Ro, Yong Man},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2024}
 }
-@article{kim2023many,
-    title={Many-to-Many Spoken Language Translation via Unified Speech and Text Representation Learning with Unit-to-Unit Translation},
-    author={Minsu Kim and Jeongsoo Choi and Dahun Kim and Yong Man Ro},
-    journal={arXiv preprint arXiv:2308.01831},
-    year={2023}
+@article{kim2024textless,
+  title={Textless Unit-to-Unit training for Many-to-Many Multilingual Speech-to-Speech Translation},
+  author={Kim, Minsu and Choi, Jeongsoo and Kim, Dahun and Ro, Yong Man},
+  journal={IEEE/ACM Transactions on Audio, Speech, and Language Processing},
+  year={2024}
 }
